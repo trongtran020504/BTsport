@@ -1,0 +1,520 @@
+/* Reset mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+:root {
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --bg-gradient: linear-gradient(to right, #a1c4fd, #c2e9fb);
+    --dark-bg: #0f2027;
+}
+
+body {
+    background-color: #f0f8ff;
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background: linear-gradient(90deg, #a1c4fd 0%, #c2e9fb 100%);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    margin: 0 15px;
+    font-weight: 600;
+    padding: 8px 15px;
+    border: 1px solid transparent;
+    transition: 0.3s;
+}
+
+nav a:hover, nav a.active {
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.icons i {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+
+
+.hero {
+    /* 1. Đặt ảnh làm nền */
+    /* Lưu ý: '../images/' là để lùi ra khỏi thư mục css để tìm thư mục images. 
+       Nếu không lên hình, bạn hãy thử sửa thành 'images/banner1.jpg' nhé */
+    background: url('../images/Sanbong.jpg') no-repeat center center/cover;
+    
+    /* 2. Căn chỉnh khung hình */
+    height: 100vh;       /* Chiều cao full màn hình */
+    display: flex;       /* Dùng Flexbox để căn giữa nội dung */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 0 50px;     /* Cách lề trái phải 50px */
+    position: relative;  /* Quan trọng: để lớp phủ đen bám vào đây */
+    z-index: 1;
+}
+
+/* Lớp phủ màu đen mờ (Giúp chữ dễ đọc hơn trên nền ảnh) */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Màu đen, độ trong suốt 60% */
+    z-index: -1; /* Nằm sau chữ nhưng nằm trước ảnh nền */
+}
+
+/* Định dạng khối nội dung chữ */
+.hero-content {
+    max-width: 600px; /* Giới hạn chiều rộng để chữ không tràn hết màn hình */
+    color: white;     /* Chữ màu trắng */
+    text-align: left; /* Căn lề trái */
+}
+
+/* Định dạng Tiêu đề to */
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Tạo bóng đổ cho chữ nổi bật */
+}
+
+/* Định dạng đoạn văn nhỏ */
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #e0e0e0; /* Màu trắng hơi xám nhẹ cho dịu mắt */
+}
+
+
+
+.btn-main {
+    padding: 10px 25px;
+    background: white;
+    color: #333;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* --- ABOUT --- */
+
+.about {
+    display: flex;
+    align-items: center;       /* Căn giữa dọc */
+    justify-content: center;   /* Căn giữa ngang */
+    padding: 80px 10%;         /* Tăng khoảng cách lề cho thoáng */
+    background: #0f2027;       /* Nền tối */
+    color: white;
+    gap: 50px;                 /* Khoảng cách giữa Ảnh và Chữ */
+}
+
+/* Phần Ảnh (Bên trái) */
+.about-img {
+    flex: 1;                   /* Chiếm 1 phần (50%) */
+    text-align: center;
+}
+
+.about-img img {
+    width: 100%;               /* Ảnh to full khung */
+    max-width: 100%;           /* Bỏ giới hạn 400px cũ đi */
+    border-radius: 20px;       /* Bo góc tròn trịa hơn */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Đổ bóng cho ảnh nổi lên */
+}
+
+/* Phần Chữ (Bên phải) */
+.about-text {
+    flex: 1;                   /* Chiếm 1 phần (50%) */
+}
+
+.about-text h2 {
+    font-size: 50px;           /* Tiêu đề "VỀ CHÚNG TÔI" siêu to */
+    font-weight: 800;          /* Chữ rất đậm */
+    margin-bottom: 10px;
+    text-transform: uppercase; /* In hoa toàn bộ */
+    letter-spacing: 2px;       /* Giãn chữ ra cho sang */
+}
+
+.about-text h3 {
+    font-size: 28px;           /* Tiêu đề phụ to hơn */
+    color: #4facfe;            /* Màu xanh sáng làm điểm nhấn */
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about-text p {
+    font-size: 18px;           /* Chữ nội dung to, dễ đọc */
+    line-height: 1.8;          /* Khoảng cách dòng thoáng */
+    margin-bottom: 30px;
+    color: #e0e0e0;            /* Màu trắng xám dịu mắt */
+    text-align: justify;       /* Căn đều 2 bên cho vuông vức */
+}
+
+/* Nút bấm to hơn cho cân xứng */
+.btn-sec {
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: white;
+    color: #333;
+    border: none;
+    border-radius: 30px;       /* Bo tròn nút */
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-sec:hover {
+    background: #4facfe;       /* Hover đổi màu xanh */
+    color: white;
+    transform: scale(1.05);    /* Phóng to nhẹ khi di chuột */
+}
+
+/* PRODUCTS */
+.products {
+    padding: 50px;
+    text-align: center;
+    background: #6dd5fa; /* Màu xanh nhạt */
+}
+
+.section-title {
+    color: white;
+    font-size: 36px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    margin-bottom: 10px;
+}
+
+.sub-title {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.filter-buttons {
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 30px;
+    margin: 0 10px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background: white;
+    color: #333;
+}
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product-card {
+    background: #89cff0; /* Xanh da trời đậm hơn nền */
+    padding: 20px;
+    border: 1px solid #333;
+    width: 250px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 200px;        
+    object-fit: contain;  
+    background: #fff;    
+    padding: 10px;      
+    border-radius: 5px;   
+    margin-bottom: 15px;
+}
+
+.product-card h4 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.price span {
+    font-size: 14px;
+    text-decoration: line-through;
+    color: #555;
+    margin-left: 5px;
+}
+
+.card-icons i {
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #333;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.buy-btn {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    padding: 8px;
+    background: transparent;
+    border: 1px solid #333;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.buy-btn:hover {
+    background: #333;
+    color: white;
+}
+
+/* FOOTER */
+footer {
+    background: #0f2027;
+    color: white;
+    text-align: center;
+    padding: 40px 0;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+    border: 1px solid white;
+    padding: 10px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    color: white;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #aaa;
+}
+  .size-selection {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        .size-selection label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .size-selection select {
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #333;
+            font-weight: bold;
+            cursor: pointer;
+            background: #fff;
+        }
+		/* --- CSS CHO THANH TÌM KIẾM --- */
+.search-box {
+    background: #fff;
+    padding: 15px;
+    position: fixed;
+    top: 70px; /* Nằm ngay dưới Header */
+    left: 0;
+    right: 0;
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    
+    /* Mặc định ẩn bằng cách đẩy lên trên và mờ đi */
+    transform: translateY(-100%); 
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none; /* Không cho bấm khi ẩn */
+}
+
+/* Class này sẽ được JS thêm vào để hiện thanh tìm kiếm */
+.search-box.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.search-box input {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.search-box i {
+    font-size: 20px;
+    margin-left: 15px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* --- CSS CHO GIỎ HÀNG (SIDEBAR) --- */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Mặc định giấu bên phải màn hình */
+    width: 350px;
+    height: 100vh;
+    background: #fff;
+    box-shadow: -5px 0 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-sidebar.active {
+    right: 0; /* Trượt ra */
+}
+
+.cart-header {
+    padding: 20px;
+    background: var(--primary-color, #6a11cb); /* Dùng màu chủ đạo của bạn */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-header i {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.cart-items {
+    flex: 1; /* Chiếm hết khoảng trống */
+    padding: 20px;
+    overflow-y: auto; /* Cho phép cuộn nếu nhiều hàng */
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.cart-item-info h4 {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.cart-item-price {
+    font-weight: bold;
+    color: red;
+}
+
+.cart-footer {
+    padding: 20px;
+    border-top: 1px solid #ddd;
+    background: #f9f9f9;
+}
+
+.cart-footer .total {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #333;
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    background: #555;
+}
+/* --- CSS CHO PHẦN BẢN ĐỒ --- */
+.location-section {
+    padding: 50px 10%;
+    text-align: center;
+    background: #f0f8ff; /* Màu nền xanh nhạt giống tổng thể web */
+}
+
+.map-container {
+    width: 100%;
+    max-width: 1000px; /* Giới hạn chiều rộng để map không bị bè ra quá */
+    margin: 0 auto;    /* Căn giữa bản đồ */
+    border: 5px solid white; /* Viền trắng bao quanh map */
+    border-radius: 15px;     /* Bo góc mềm mại */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1); /* Đổ bóng cho nổi */
+    overflow: hidden; /* Cắt bỏ phần thừa nếu có */
+}
+
+.map-container iframe {
+    display: block; /* Xóa khoảng trắng thừa dưới chân iframe */
+    width: 100%;    /* Full chiều rộng khung chứa */
+}
